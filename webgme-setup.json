@@ -15,15 +15,25 @@
       }
     },
     "plugins": {
+      "MyPluginName": {
+        "src": "src/plugins/MyPluginName",
+        "test": "test/plugins/MyPluginName"
+      },
       "PeNDeSInterpreter": {
         "src": "src/plugins/PeNDeSInterpreter",
         "test": "test/plugins/PeNDeSInterpreter"
+      }
+    },
+    "decorators": {
+      "petriNetDecorator": {
+        "src": "src/decorators/petriNetDecorator"
       }
     }
   },
   "dependencies": {
     "visualizers": {},
     "seeds": {},
-    "plugins": {}
+    "plugins": {},
+    "decorators": {}
   }
 }
