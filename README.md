@@ -1,51 +1,41 @@
-# WDeStuP
-This repository is intended to server as a bootstrap for a fully docker based Design Studio development with WebGME.
-This way, the developer's computer can remain clean from installation (other than docker and required images) of any additional software.
-So, forget the hassle of installing and running mongoDB, or Nodejs+npm, or Python that all can be challenging based on your actual OS.
-Just enjoy the pure joy of creating a Design Studio that really boost the productivity of engineers!
+# PeNDeS
+This repository is a fully docker based Design Studio development with WebGME.
 
-## Initialization
-The easiest way to start using this project is to fork it in git. Alternatively, you can create your empty repository, copy the content and just rename all instances of 'WDeStuP' to your liking. Assuming you fork, you can start-up following this few simple steps:
+## What is the domain about?
+This design studio allows working with Petri nets. Use the predefined metamodel in the seed to instantly start creating Petri nets. A Petri net is defined as a triple (P, T, F) where:
+- P is a finite set of places
+- T is a finite set of transitions (P ∩ T = ∅)
+- F ⊆ (P x T) ∪ (T x P) is a set of arcs (flow relation) {for short we will write f(p→t) to describe an arc that connect transition t to place p}.
+The plugin PeNDeSInterpreter will assist you in classifying your created Petri nets.
+
+## Typical use-cases
+Here are some common use cases:
+- Computational Biology
+- Control Engineering
+- Process Modeling
+- Reliability Engineering
+- Workflow Management Systems
+
+## How to install the design studio
 - install [Docker-Desktop](https://www.docker.com/products/docker-desktop)
 - clone the repository
 - edit the '.env' file so that the BASE_DIR variable points to the main repository directory
 - `docker-compose up -d`
 - connect to your server at http://localhost:8888
+- create a new project from the sample seed or your own
 
-## Main docker commands
-All of the following commands should be used from your main project directory (where this file also should be):
-- To **rebuild** the complete solution `docker-compose build` (and follow with the `docker-compose up -d` to restart the server)
-- To **debug** using the logs of the WebGME service `docker-compose logs webgme`
-- To **stop** the server just use `docker-compose stop`
-- To **enter** the WebGME container and use WebGME commands `docker-compose exec webgme bash` (you can exit by simply closing the command line with linux command 'exit') 
-- To **clean** the host machine of unused (old version) images `docker system prune -f`
-## Using WebGME commands to add components to your project
-In general, you can use any WebGME commands after you successfully entered the WebGME container. It is important to note that only the src directory is shared between the container and the host machine, so you need to additionally synchronize some files after finishing your changes inside the container! The following is few scenarios that frequently occur:
-### Adding new npm dependency
-When you need to install a new library you should follow these steps:
-- enter the container
-- `npm i -s yourNewPackageName`
-- exit the container
-- copy the package.json file `docker-compose cp webgme:/usr/app/package.json package.json`
-### Adding new interpreter/plugin to your DS
-Follow these steps to add a new plugin:
-- enter the container
-- for JS plugin: `npm run webgme new plugin MyPluginName`
-- for Python plugin: `npm run webgme new plugin -- --language Python MyPluginName`
-- exit container
-- copy webgme-setup.json `docker-compose cp webgme:/usr/app/webgme-setup.json webgme-setup.json`
-- copy webgme-config `docker-compose cp webgme:/usr/app/config/config.webgme.js config/config.webgme.js`
-### Adding new visualizer to your DS
-Follow these steps to add a new visualizer:
-- enter the container
-- `npm run webgme new viz MyVisualizerName`
-- exit container
-- copy webgme-setup.json `docker-compose cp webgme:/usr/app/webgme-setup.json webgme-setup.json`
-- copy webgme-config `docker-compose cp webgme:/usr/app/config/config.webgme.js config/config.webgme.js`
-### Adding new seed to your DS
-Follow these steps to add a new seed based on an existing project in your server:
-- enter the container
-- `npm run webgme new seed MyProjectName -- --seed-name MySeedName`
-- exit container
-- copy webgme-setup.json `docker-compose cp webgme:/usr/app/webgme-setup.json webgme-setup.json`
-- copy webgme-config `docker-compose cp webgme:/usr/app/config/config.webgme.js config/config.webgme.js`
+### How to start modeling once the studio is installed
+How to create your own model using the sample seed:
+- Create a folder for your models
+- Add Petri net instance 
+- Add places and transitions. (Ensure each place and transition has a connected entry and exit port for arcs)
+- Add connecting arcs
+- Update place tokens to desired states
+- You can now use the interpreter or visualizer on your created model.
+
+### Features and how to use them
+Visualizer:
+- Add the PeNDeSViz visualizer to the valid visualizers on the meta tab of your model.
+Interpreter:
+- Add the PeNDeSInterpreter plugin to the valid plugins on the meta tab of your model.
+- From the toolbar click the play button for the PeNDeSInterpreter. Check console for classification descriptions of your model.
