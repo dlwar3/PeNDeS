@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "id": "PeNDeSViz",
+    "title": "PeNDeSViz",
+    "panel": "panels/PeNDeSViz/PeNDeSVizPanel",
+    "DEBUG_ONLY": false
+  }
+]

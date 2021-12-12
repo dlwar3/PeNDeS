@@ -1,4 +1,16 @@
 {
-  "components": {},
-  "dependencies": {}
+  "components": {
+    "visualizers": {
+      "PeNDeSViz": {
+        "src": "panels/PeNDeSViz/PeNDeSVizPanel",
+        "title": "PeNDeSViz",
+        "panel": "src/visualizers/panels/PeNDeSViz",
+        "secondary": false,
+        "widget": "src/visualizers/widgets/PeNDeSViz"
+      }
+    }
+  },
+  "dependencies": {
+    "visualizers": {}
+  }
 }
