@@ -8,9 +8,15 @@
         "secondary": false,
         "widget": "src/visualizers/widgets/PeNDeSViz"
       }
+    },
+    "seeds": {
+      "PeNDeSExample": {
+        "src": "src/seeds/PeNDeSExample"
+      }
     }
   },
   "dependencies": {
-    "visualizers": {}
+    "visualizers": {},
+    "seeds": {}
   }
 }
