@@ -13,10 +13,21 @@
       "PeNDeSExample": {
         "src": "src/seeds/PeNDeSExample"
       }
+    },
+    "plugins": {
+      "MyPluginName": {
+        "src": "src/plugins/MyPluginName",
+        "test": "test/plugins/MyPluginName"
+      },
+      "PeNDeSInterpreter": {
+        "src": "src/plugins/PeNDeSInterpreter",
+        "test": "test/plugins/PeNDeSInterpreter"
+      }
     }
   },
   "dependencies": {
     "visualizers": {},
-    "seeds": {}
+    "seeds": {},
+    "plugins": {}
   }
 }
